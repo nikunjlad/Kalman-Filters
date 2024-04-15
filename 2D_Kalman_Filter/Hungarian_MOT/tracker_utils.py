@@ -1,4 +1,3 @@
-import enum
 import numpy as np
 from scipy.optimize import linear_sum_assignment
 
@@ -43,5 +42,11 @@ def track_association(tracks, detections, dist_th = 0.5):
         else:
             unpaired_tracks.append(i)
             unpaired_detections.append(j)
+
+    if len(unpaired_detections) > 1:
+        unpaired_detections.sort()
+
+    if len(unpaired_tracks) > 1:
+        unpaired_tracks.sort()
 
     return pairs, unpaired_detections, unpaired_tracks
